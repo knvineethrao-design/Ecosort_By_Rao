@@ -1,0 +1,96 @@
+
+pytorch
+2.14.1+cpu:��
+�
+images
+features.0.weight
+features.0.weight_biasgetitem
+node_Conv_156"Conv*
+kernel_shape@@�*
+group�*
+auto_pad"NOTSET�*
+	dilations@@�*
+strides@@�*
+pads@@@@�J�
+	namespace�: model.WasteClassifier/features: torch.nn.modules.container.Sequential/features.1: torch.nn.modules.batchnorm.BatchNorm2d/_native_batch_norm_legit_no_training: aten._native_batch_norm_legit_no_training.defaultJV
+!pkg.onnxscript.rewriter.rule_name1FuseBatchNormIntoConv, RemoveOptionalBiasFromConvJ�
+pkg.torch.onnx.class_hierarchy�['model.WasteClassifier', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.batchnorm.BatchNorm2d', 'aten._native_batch_norm_legit_no_training.default']J�
+pkg.torch.onnx.fx_node�%_native_batch_norm_legit_no_training : [num_users=1] = call_function[target=torch.ops.aten._native_batch_norm_legit_no_training.default](args = (%conv2d, %p_features_1_weight, %p_features_1_bias, %b_features_1_running_mean, %b_features_1_running_var, 0.1, 1e-05), kwargs = {})Jd
+pkg.torch.onnx.name_scopesF['', 'features', 'features.1', '_native_batch_norm_legit_no_training']J�
+pkg.torch.onnx.stack_trace�File "C:\Users\LENOVO\Documents\Waste_Classifier\model.py", line 54, in forward
+    x = self.features(x)
+  File "C:\Users\LENOVO\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\torch\nn\modules\container.py", line 259, in forward
+    input = module(input)
+  File "C:\Users\LENOVO\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\torch\nn\modules\batchnorm.py", line 210, in forward
+    return F.batch_norm(
+�
+getitem
+min_val_cast
+max_val_casthardtanhn4"ClipJ�
+	namespace�: model.WasteClassifier/features: torch.nn.modules.container.Sequential/features.2: torch.nn.modules.activation.ReLU6/hardtanh: aten.hardtanh.defaultJ�
+pkg.torch.onnx.class_hierarchy�['model.WasteClassifier', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.activation.ReLU6', 'aten.hardtanh.default']J�
+pkg.torch.onnx.fx_node{%hardtanh : [num_users=1] = call_function[target=torch.ops.aten.hardtanh.default](args = (%getitem, 0.0, 6.0), kwargs = {})JH
+pkg.torch.onnx.name_scopes*['', 'features', 'features.2', 'hardtanh']J�
+pkg.torch.onnx.stack_trace�File "C:\Users\LENOVO\Documents\Waste_Classifier\model.py", line 54, in forward
+    x = self.features(x)
+  File "C:\Users\LENOVO\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\torch\nn\modules\container.py", line 259, in forward
+    input = module(input)
+  File "C:\Users\LENOVO\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\torch\nn\modules\activation.py", line 294, in forward
+    return F.hardtanh(input, self.min_val, self.max_val, self.inplace)
+�
+hardtanh
+features.3.block.0.weight
+features.3.block.0.weight_bias	getitem_3
+node_Conv_158"Conv*
+kernel_shape@@�*
+group�*
+auto_pad"NOTSET�*
+	dilations@@�*
+strides@@�*
+pads@@@@�J�
+	namespace�: model.WasteClassifier/features: torch.nn.modules.container.Sequential/features.3: model.DepthwiseSeparableConv/features.3.block: torch.nn.modules.container.Sequential/features.3.block.1: torch.nn.modules.batchnorm.BatchNorm2d/_native_batch_norm_legit_no_training_1: aten._native_batch_norm_legit_no_training.defaultJV
+!pkg.onnxscript.rewriter.rule_name1FuseBatchNormIntoConv, RemoveOptionalBiasFromConvJ�
+pkg.torch.onnx.class_hierarchy�['model.WasteClassifier', 'torch.nn.modules.container.Sequential', 'model.DepthwiseSeparableConv', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.batchnorm.BatchNorm2d', 'aten._native_batch_norm_legit_no_training.default']J�
+pkg.torch.onnx.fx_node�%_native_batch_norm_legit_no_training_1 : [num_users=1] = call_function[target=torch.ops.aten._native_batch_norm_legit_no_training.default](args = (%conv2d_1, %p_features_3_block_1_weight, %p_features_3_block_1_bias, %b_features_3_block_1_running_mean, %b_features_3_block_1_running_var, 0.1, 1e-05), kwargs = {})J�
+pkg.torch.onnx.name_scopesr['', 'features', 'features.3', 'features.3.block', 'features.3.block.1', '_native_batch_norm_legit_no_training_1']J�
+pkg.torch.onnx.stack_trace�File "C:\Users\LENOVO\Documents\Waste_Classifier\model.py", line 54, in forward
+    x = self.features(x)
+  File "C:\Users\LENOVO\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\torch\nn\modules\container.py", line 259, in forward
+    input = module(input)
+  File "C:\Users\LENOVO\Documents\Waste_Classifier\model.py", line 32, in forward
+    return self.block(x)
+  File "C:\Users\LENOVO\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\torch\nn\modules\container.py", line 259, in forward
+    input = module(input)
+  File "C:\Users\LENOVO\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\torch\nn\modules\batchnorm.py", line 210, in forward
+    return F.batch_norm(
+�
+	getitem_3
+min_val_cast
+max_val_cast
+hardtanh_1n4_2"ClipJ�
+	namespace�: model.WasteClassifier/features: torch.nn.modules.container.Sequential/features.3: model.DepthwiseSeparableConv/features.3.block: torch.nn.modules.container.Sequential/features.3.block.2: torch.nn.modules.activation.ReLU6/hardtanh_1: aten.hardtanh.defaultJ�
+pkg.torch.onnx.class_hierarchy�['model.WasteClassifier', 'torch.nn.modules.container.Sequential', 'model.DepthwiseSeparableConv', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.activation.ReLU6', 'aten.hardtanh.default']J�
+pkg.torch.onnx.fx_node%hardtanh_1 : [num_users=1] = call_function[target=torch.ops.aten.hardtanh.default](args = (%getitem_3, 0.0, 6.0), kwargs = {})Jt
+pkg.torch.onnx.name_scopesV['', 'features', 'features.3', 'features.3.block', 'features.3.block.2', 'hardtanh_1']J�
+pkg.torch.onnx.stack_trace�File "C:\Users\LENOVO\Documents\Waste_Classifier\model.py", line 54, in forward
+    x = self.features(x)
+  File "C:\Users\LENOVO\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\torch\nn\modules\container.py", line 259, in forward
+    input = module(input)
+  File "C:\Users\LENOVO\Documents\Waste_Classifier\model.py", line 32, in forward
+    return self.block(x)
+  File "C:\Users\LENOVO\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\torch\nn\modules\container.py", line 259, in forward
+    input = module(input)
+  File "C:\Users\LENOVO\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\torch\nn\modules\activation.py", line 294, in forward
+    return F.hardtanh(input, self.min_val, self.max_val, self.inplace)
+�
+
+hardtanh_1
+features.3.block.3.weight
+features.3.block.3.weight_bias	getitem_6
+node_Conv_160"Conv*
+kernel_shape@@�*
+group�*
+auto_pad"NOTSET�*
+	dilations@@�*
+strides@@�*
+pads@
